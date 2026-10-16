@@ -1,0 +1,11 @@
+spec_version: '1.0'
+stop_after: P3
+seed: 42
+gpu_index: 3
+precision: float32
+batch_size: 1
+runtime_splits: [dev]
+methods: [B0_R2_NATIVE, B1_R2_LOCAL_CONTROL, C0_CONFIDENCE_ONLY, C1_CURRENT_CALIBRATION]
+external_llm: false
+history_memory: false
+base_config: configs/pilot.yaml

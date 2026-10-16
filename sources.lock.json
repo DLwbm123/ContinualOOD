@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "checked_on": "2026-10-16",
-  "status": "PARTIAL_METADATA_ONLY_NOT_READY_FOR_INFERENCE",
+  "status": "MODEL_LOADED_P1_IDENTITY_LIMITATIONS_P2_PENDING",
   "r2seg": {
     "url": "https://github.com/Eurekashen/R2Seg",
     "commit": "48a0a14ce1f0da6a51cdf26bcc821d64b176c0c5",
@@ -13,20 +13,21 @@
     "filename": "biomedparse_v1.pt",
     "size_bytes": 1803167371,
     "publisher_sha256": "66716517a59e5b8060dc87732a4d65fea1f699ecec3f6a8440749f3ea2b917dc",
-    "local_digest_verified": false,
+    "local_digest_verified": true,
     "gated": "auto",
     "downloaded": true,
     "license": "cc-by-nc-sa-4.0",
     "acquisition": "user_supplied_files_transferred",
     "local_path": null,
-    "local_revision_verified": false,
-    "checkpoint_loaded": false,
+    "local_revision_verified": true,
+    "checkpoint_loaded": true,
     "size_check_passed": true,
     "companion_files": {
       "config.yaml": 4537,
       "target_dist.json": 11739
     },
-    "local_path_configuration": "configs/local.yaml (untracked)"
+    "local_path_configuration": "configs/local.yaml (untracked)",
+    "companion_revision_verified": false
   },
   "fedbca": {
     "record_id": "13622759",
@@ -46,8 +47,8 @@
         }
       }
     ],
-    "downloaded": false,
-    "patient_mapping_audited": false
+    "downloaded": true,
+    "patient_mapping_audited": "release_image_key_grouping_only"
   },
   "inference_ready": false,
   "detectron2": {
@@ -57,5 +58,9 @@
     "archive_url": "https://codeload.github.com/MaureenZOU/detectron2-xyz/tar.gz/refs/heads/main",
     "patch": "patches/detectron2-pillow.patch",
     "build": "CPU extension; torchvision CUDA ops tested separately"
+  },
+  "auxiliary_assets": {
+    "biomedbert_revision": "e1354b7a3a09615f6aba48dfad4b7a613eef7062",
+    "clip_tokenizer_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268"
   }
 }
