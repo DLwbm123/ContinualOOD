@@ -1,0 +1,252 @@
+# 本文件是待实现项目的配置合同，不是上游 R2-Seg 配置。
+# null 必须在 P0/P1 解析；未解析仅允许审核，不允许正式推理。
+spec_version: '1.0'
+status: implementation_contract_not_an_executable_upstream_config
+project:
+  name: continual-ood-tumor
+  package: continual_ood
+  cli: cood
+  first_round_stop_after: P5
+paths:
+  data_root: ${COOD_DATA_ROOT}
+  cache_root: ${COOD_CACHE_ROOT}
+  output_root: ${COOD_OUTPUT_ROOT}
+  source_lock: sources.lock.json
+  local_config: configs/local.yaml
+runtime:
+  seed: 42
+  device: cuda
+  precision: float32
+  slice_batch_size: 1
+  allow_cpu_fallback_for_real_inference: false
+  allow_cpu_unit_tests: true
+  disable_external_llm: true
+  inference_mode: true
+  freeze_model_parameters: true
+  freeze_running_buffers: true
+  require_resolved_source_lock: true
+  allow_optimizer: false
+model:
+  family: BiomedParse
+  version: v1
+  source_repo: https://github.com/Eurekashen/R2Seg
+  resolved_code_commit: null
+  weights_repo: microsoft/BiomedParse
+  weights_file: biomedparse_v1.pt
+  resolved_weights_revision: null
+  weights_sha256: null
+  weights_local_path: null
+  respect_access_terms: true
+  reject_architecture_mismatch: true
+downloads:
+  dry_run_first: true
+  max_new_data_gib: 5
+  max_model_assets_gib: 10
+  max_workspace_gib: 50
+  require_known_size_or_confirmation: true
+  verify_checksums: true
+  full_cancerverse_download: false
+data:
+  primary_dataset: fedbca
+  resolved_version: null
+  audit_required: true
+  patient_mapping_required: true
+  check_duplicates: true
+  check_label_completeness: true
+  default_sequence: T2w
+  process_all_eligible_slices: true
+  gt_based_slice_selection: false
+  runtime_manifest: manifests_local/runtime_manifest.jsonl
+  evaluation_manifest: manifests_local/evaluation_manifest.jsonl
+  split_registry: manifests_local/split_registry.jsonl
+  stream_schedule: manifests_local/stream_schedule.jsonl
+split:
+  target_unique_patients: 60
+  fallback_range:
+  - 40
+  - 60
+  centers_desired: 3
+  per_center:
+    dev: 4
+    stream: 10
+    probe: 6
+  split_seed: 42
+  respect_existing_official_test: true
+  patient_grouped: true
+  schedule_if_full_plan_valid:
+  - domain: A
+    partition: stream_first
+    count: 6
+  - domain: B
+    partition: stream
+    count: 10
+  - domain: C
+    partition: stream
+    count: 10
+  - domain: A
+    partition: stream_return
+    count: 4
+  domain_labels_visible_to_method: false
+  adapt_plan_only_after_audit: true
+query_policy:
+  mode: fixed_for_every_study
+  target_queries:
+  - bladder tumor
+  plan_source: audited_upstream_template
+  resolved_plan_file: null
+  plan_hash: null
+  use_case_ground_truth_to_select_query: false
+geometry:
+  work_array_order: zyx
+  preserve_native_affine: true
+  native_grid_evaluation: true
+  force_isotropic_resampling: false
+  mask_interpolation: nearest
+  slice_spacing_order:
+  - row_mm
+  - col_mm
+  research_mri_percentiles:
+  - 1.0
+  - 99.0
+  research_mri_valid_support: finite_nonzero_current_scan
+  unknown_affine_policy: block
+native:
+  method_id: B0_R2_NATIVE
+  export_effective_upstream_config: true
+  effective_mitigation_enabled: null
+  candidate_threshold_observed: 0.4
+  min_pixels_observed: 50
+  preserve_original_behavior: true
+  instrument_all_candidates: true
+  patches_require_separate_method_id: true
+  parity_fixed_slices: 10
+proposals:
+  research_threshold: 0.4
+  research_connectivity: 26
+  research_min_component_voxels: 1
+  fixed_shapes_across_research_methods: true
+  native_min_pixels_not_reused_as_3d_threshold: true
+reference:
+  feature: percentile_normalized_intensity
+  exclude_all_proposals: true
+  exclusion_margin_mm: 3.0
+  compartment_mode: audited_anchor_distance_shell_core
+  shell_width_mm: 3.0
+  allow_full_frame_as_normal_reference: false
+  distance: biased_gaussian_mmd2
+  kernel_sigma: 0.1
+  max_samples_per_region: 256
+  min_samples_per_region: 16
+  null_patch_target: 6
+  null_patch_min: 4
+  physical_size_bins_mm:
+  - 4.0
+  - 8.0
+  - 16.0
+  fit_and_null_disjoint: true
+  insufficient_reference_policy: no_score_correction
+  empirical_rank_is_pvalue: false
+scoring:
+  base: logit_of_mean_probability_in_fixed_proposal
+  q_clip:
+  - 0.0001
+  - 0.9999
+  lambda_local: 0.5
+  lambda_history: 0.5
+  fixed_output_threshold: 0.0
+  unavailable_local_weight: 0.0
+  unavailable_history_weight: 0.0
+  history_donor_aggregation: median
+  history_rank_mad_cutoff: 0.25
+  tune_on_current_stream_labels: false
+memory:
+  update_unit: complete_study
+  predict_before_update: true
+  max_study_entries: 64
+  max_patches_per_study: 24
+  max_patches_per_size_bin: 8
+  max_samples_per_patch: 256
+  max_serialized_mib: 64
+  dtype: float32
+  eviction: fifo
+  cross_patient_raw_image_storage: false
+  atomic_commit: true
+  deduplicate_events: true
+  exclude_same_patient_from_population_retrieval: true
+retrieval:
+  compatibility_keys:
+  - anchor
+  - modality
+  - sequence
+  - working_view
+  - physical_size_bin
+  context_quantiles:
+  - 0.1
+  - 0.25
+  - 0.5
+  - 0.75
+  - 0.9
+  context_distance: mean_absolute_difference
+  max_context_distance: 0.15
+  top_k_distinct_patients: 3
+  min_distinct_patients: 2
+  use_center_or_stage_id: false
+  novel_organ_policy: exact_C1_fallback
+safe_write:
+  anchor_mean_probability_min: 0.8
+  all_view_target_probability_max: 0.1
+  view_probability_std_max: 0.05
+  require_view_evidence: true
+  missing_view_evidence_policy: skip_write
+  allow_rejected_candidate_as_normal: false
+  allow_gt_for_quality: false
+methods:
+  diagnostic:
+  - B0_R2_NATIVE
+  - B1_R2_LOCAL_CONTROL
+  research_comparisons:
+  - C0_CONFIDENCE_ONLY
+  - C1_CURRENT_CALIBRATION
+  - B2_FIFO_MEMORY
+  - B3_MATCHED_MEMORY
+  - B4_SAFE_MEMORY
+  required_reset_control: true
+  oracle_reference_dev_only: true
+stream:
+  order_seeds:
+  - 42
+  - 43
+  - 44
+  initial_debug_order_seed: 42
+  probe_at_stage_boundaries: true
+  probe_updates_memory: false
+  probe_changes_rng: false
+  allow_future_cache_reads: false
+  resume_requires_hash_match: true
+evaluation:
+  label_process_isolated: true
+  positive_scan_dice: true
+  negative_scan_specificity_requires_verified_negative: true
+  complete_annotation_required_for_full_froc: true
+  gt_connectivity_if_no_instances: 26
+  lesion_match: score_ordered_one_to_one_max_iou
+  lesion_match_iou: 0.1
+  matching_sensitivity_analysis_iou:
+  - 0.05
+  - 0.25
+  froc_budgets_fp_per_scan:
+  - 0.25
+  - 0.5
+  - 1.0
+  froc_interpolation: conservative_empirical_steps
+  include_reject_all_point: true
+  empty_feasible_nonzero_predictions_policy: report_zero_sensitivity_with_flag
+  missing_annotation_policy: not_evaluable
+  bootstrap_unit: patient
+  bootstrap_repetitions: 1000
+  hide_metrics_from_method: true
+extensions:
+  enable_s2: false
+  enable_s3: false
+  enable_cancerverse: false
+  config_file: configs/extensions.yaml

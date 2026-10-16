@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeStudyRecord",
+  "description": "Inference-only record. No current GT, center, stage, cancer truth, or TP/FP fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "study_uid",
+    "patient_key",
+    "image_path",
+    "geometry_path",
+    "modality",
+    "sequence",
+    "working_view",
+    "past_study_uids"
+  ],
+  "properties": {
+    "study_uid": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patient_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geometry_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modality": {
+      "type": "string",
+      "enum": [
+        "MRI",
+        "CT"
+      ]
+    },
+    "sequence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "working_view": {
+      "type": "string",
+      "enum": [
+        "axial",
+        "sagittal",
+        "coronal",
+        "native_audited"
+      ]
+    },
+    "past_study_uids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "relative_visit_index": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "elapsed_days_since_previous": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "image_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "study_available_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contrast_state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

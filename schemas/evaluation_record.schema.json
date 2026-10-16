@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvaluationRecord",
+  "description": "Read only in the isolated evaluator. Absence of label data is not a verified negative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "study_uid",
+    "patient_key",
+    "label_path",
+    "annotation_completeness",
+    "evaluation_target",
+    "negative_verified",
+    "verification_source"
+  ],
+  "properties": {
+    "study_uid": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patient_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label_path": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "annotation_completeness": {
+      "type": "string",
+      "enum": [
+        "complete_for_target",
+        "partial",
+        "unknown",
+        "verified_negative"
+      ]
+    },
+    "evaluation_target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label_mapping": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "integer",
+          "array",
+          "string"
+        ]
+      }
+    },
+    "reader_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid_annotation_region_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "negative_verified": {
+      "type": "boolean"
+    },
+    "verification_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instance_label_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "temporal_correspondence_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "annotation_completeness": {
+            "const": "complete_for_target"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "label_path": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "annotation_completeness": {
+            "const": "verified_negative"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "negative_verified": {
+            "const": true
+          },
+          "verification_source": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "negative_verified": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "verification_source": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

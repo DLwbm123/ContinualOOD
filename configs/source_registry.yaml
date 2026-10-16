@@ -1,0 +1,104 @@
+# 来源状态不等于文件访问权限或下载完成；不要伪造 revision/校验和。
+checked_on: '2026-10-16'
+lock_required_before_inference: true
+papers:
+- id: P1
+  title: 'R2-Seg: Training-Free OOD Medical Tumor Segmentation via Anatomical Reasoning
+    and Statistical Rejection'
+  type: user_provided_pdf
+  local_path: null
+  included_in_bundle: false
+- id: P2
+  title: 'CancerVerse: A Fully Open Longitudinal and Multimodal Dataset for Multicancer
+    Screening'
+  type: user_provided_pdf
+  local_path: null
+  included_in_bundle: false
+sources:
+- id: S1
+  name: R2Seg
+  url: https://github.com/Eurekashen/R2Seg
+  role: primary_implementation
+  status: page_checked_not_executed
+  resolved_revision: null
+- id: S2
+  name: R2Seg pipeline
+  url: https://raw.githubusercontent.com/Eurekashen/R2Seg/main/tta_pipeline/pipeline.py
+  role: code_audit
+  status: content_checked
+  resolved_revision: null
+- id: S3
+  name: R2Seg statistical_test
+  url: https://raw.githubusercontent.com/Eurekashen/R2Seg/main/tta_pipeline/statistical_test.py
+  role: current_candidate_exclusion_and_mmd
+  status: content_checked
+  resolved_revision: null
+- id: S4
+  name: R2Seg configuration
+  url: https://raw.githubusercontent.com/Eurekashen/R2Seg/main/tta_pipeline/config.py
+  role: version_and_effective_config_audit
+  status: content_checked
+  resolved_revision: null
+- id: S5
+  name: BiomedParse repository
+  url: https://github.com/microsoft/BiomedParse
+  role: official_model_information
+  status: current_page_contains_v2_do_not_substitute_for_v1
+  resolved_revision: null
+- id: S6
+  name: BiomedParse weights
+  url: https://huggingface.co/microsoft/BiomedParse/tree/main
+  repo_id: microsoft/BiomedParse
+  filename: biomedparse_v1.pt
+  role: weights
+  status: file_listing_checked_access_conditions_apply
+  resolved_revision: null
+  sha256: null
+- id: S7
+  name: FedBCa data paper
+  url: https://www.nature.com/articles/s41597-024-03971-0
+  role: cohort_description
+  status: main_content_checked
+- id: S8
+  name: FedBCa version entry
+  url: https://zenodo.org/records/10409145
+  role: data_discovery
+  status: old_version_readable_newer_version_not_resolved
+  archive_name_observed: FedBCa.rar
+  resolved_record_id: null
+  resolved_file_urls: []
+  downloaded: false
+- id: S9
+  name: Prostate158 repository
+  url: https://github.com/kbressem/prostate158
+  role: dataset_documentation
+  status: page_checked
+- id: S10a
+  name: Prostate158 training record
+  url: https://zenodo.org/records/6481141
+  role: extension_data_candidate
+  status: search_confirmed_direct_fetch_rate_limited
+  resolved_file_urls: []
+  downloaded: false
+- id: S10b
+  name: Prostate158 test record candidate
+  url: https://zenodo.org/records/6592345
+  role: extension_data_candidate
+  status: direct_fetch_timeout_reverify_before_use
+  resolved_file_urls: []
+  downloaded: false
+- id: S11
+  name: CC-Tumor-Heterogeneity
+  url: https://www.cancerimagingarchive.net/collection/cc-tumor-heterogeneity/
+  role: longitudinal_extension_candidate
+  status: official_search_index_seen_page_fetch_failed
+  temporal_masks_audited: false
+  downloaded: false
+- id: S12
+  name: CancerVerse
+  url: https://huggingface.co/datasets/BodyMaps/CancerVerse
+  repo_id: BodyMaps/CancerVerse
+  role: selective_ct_extension
+  status: dataset_card_checked_files_not_audited
+  resolved_revision: null
+  downloaded: false

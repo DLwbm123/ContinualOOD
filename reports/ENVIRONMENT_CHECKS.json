@@ -1,0 +1,18 @@
+{
+  "test_kind": "synthetic_hardware_and_import_check",
+  "is_real_run": false,
+  "model_loaded": false,
+  "torch": "2.7.1+cu128",
+  "torchvision": "0.22.1+cu128",
+  "cuda_runtime": "12.8",
+  "device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "capability": [
+    12,
+    0
+  ],
+  "matmul_conv_nms": "PASS",
+  "backend_import": "PASS",
+  "detectron2_cpu_extension": "PASS",
+  "environment_check": "PASS",
+  "pip_check": "No broken requirements found."
+}

@@ -1,0 +1,68 @@
+# Local data and patient-level artifacts
+/data/
+/datasets_local/
+/pretrained/
+/weights/
+/checkpoints/
+/cache/
+/caches/
+/outputs/
+/predictions/
+/memory_states/
+/manifests_local/
+/qc_local/
+/raw/
+/processed/
+/private/
+reports/private/
+*.nii
+*.nii.gz
+*.dcm
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.rar
+*.zip
+
+# Credentials / local settings
+.env
+.env.*
+!.env.example
+*token*.json
+*credentials*.json
+*.pem
+configs/local.yaml
+
+# Python / tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+/third_party/
+/envs/
+/models/
+/logs/
+/tmp/
+
+# The ignore list is not a permission policy.
+# Audit staged files: PHI and patient metadata can also appear in .csv/.json/.md/.png.
+
+# Private deployment and raw machine reports (publish sanitized summaries only)
+/scripts/env.sh
+/scripts/env_gpu.sh
+/reports/environment.json
+/reports/hardware-check.json
+/reports/model-assets.json
+/reports/download-status.json

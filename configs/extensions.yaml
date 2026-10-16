@@ -1,0 +1,62 @@
+# 后续任务，首轮不执行；需先完成数据与资源审核。
+spec_version: '1.0'
+all_extensions_disabled_by_default: true
+s2:
+  enabled: false
+  datasets:
+  - fedbca
+  - prostate158
+  - cc_tumor_heterogeneity
+  sequence_preference: T2w
+  predefined_query_set_required: true
+  novelty_claim: unseen_in_adaptation_stream
+  strict_new_organ_fallback_has_no_expected_positive_fwt: true
+  optional_shared_anchor_transfer:
+    enabled: false
+    requires_new_ablation: true
+    requires_fov_and_annotation_audit: true
+  evaluate_before_first_adaptation: true
+  allow_evaluation_updates: false
+s3:
+  enabled: false
+  dataset_candidate: cc_tumor_heterogeneity
+  require_patient_time_mapping: true
+  require_referenced_series_rtstruct_match: true
+  max_past_visits_per_patient: 1
+  history_mask_source: previous_prediction
+  freeze_population_memory_initially: true
+  registration_initial: rigid_then_affine_if_audited
+  mapping: current_fixed_to_previous_moving
+  allow_current_gt_registration_gate: false
+  max_extra_history_rois: 2
+  current_path_always_enabled: true
+  extra_roi_compute_matched_control: true
+  history_manual_mask_condition_separate: true
+  max_patient_state_mib: 256
+  old_patient_state_eviction: lru
+  max_cached_patients: 8
+  metrics:
+  - native_volume_change_error
+  - new_lesion_sensitivity_if_verified_correspondence
+  - false_persistence_if_verified_correspondence
+cancerverse:
+  enabled: false
+  repo_id: BodyMaps/CancerVerse
+  metadata_first: true
+  selected_scan_range:
+  - 100
+  - 200
+  sample_longitudinal_by_patient: true
+  full_download: false
+  max_new_data_gib: 20
+  require_separate_budget_confirmation: true
+  version_lock_required: true
+  download_reports: false
+  download_pathology_text: false
+  negative_semantics: target_specific_not_universally_healthy
+  missing_mask_is_negative: false
+deep_features:
+  enabled: false
+  frozen_only: true
+  separate_from_memory_ablation: true
+  white_box_access_must_be_disclosed: true

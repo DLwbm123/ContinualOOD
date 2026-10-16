@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-16",
+  "status": "PARTIAL_METADATA_ONLY_NOT_READY_FOR_INFERENCE",
+  "r2seg": {
+    "url": "https://github.com/Eurekashen/R2Seg",
+    "commit": "48a0a14ce1f0da6a51cdf26bcc821d64b176c0c5",
+    "local_path": "third_party/R2Seg"
+  },
+  "model": {
+    "repo": "microsoft/BiomedParse",
+    "revision": "e473e5b2b1a3f44649734afd3dc7cf1770aaa9e2",
+    "filename": "biomedparse_v1.pt",
+    "size_bytes": 1803167371,
+    "publisher_sha256": "66716517a59e5b8060dc87732a4d65fea1f699ecec3f6a8440749f3ea2b917dc",
+    "local_digest_verified": false,
+    "gated": "auto",
+    "downloaded": true,
+    "license": "cc-by-nc-sa-4.0",
+    "acquisition": "user_supplied_files_transferred",
+    "local_path": null,
+    "local_revision_verified": false,
+    "checkpoint_loaded": false,
+    "size_check_passed": true,
+    "companion_files": {
+      "config.yaml": 4537,
+      "target_dist.json": 11739
+    },
+    "local_path_configuration": "configs/local.yaml (untracked)"
+  },
+  "fedbca": {
+    "record_id": "13622759",
+    "url": "https://zenodo.org/records/13622759",
+    "latest_relation_resolved": true,
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "files": [
+      {
+        "id": "12fb6bcb-46ff-495c-82c3-5709dd753234",
+        "key": "FedBCa.rar",
+        "size": 1028171551,
+        "checksum": "md5:350e81f66ed67413438eac544f1be70c",
+        "links": {
+          "self": "https://zenodo.org/api/records/13622759/files/FedBCa.rar/content"
+        }
+      }
+    ],
+    "downloaded": false,
+    "patient_mapping_audited": false
+  },
+  "inference_ready": false,
+  "detectron2": {
+    "url": "https://github.com/MaureenZOU/detectron2-xyz",
+    "commit": "42121d75e10d9f858f3a91b6a39f5722c02868f0",
+    "commit_evidence": "GitHub source archive PAX comment",
+    "archive_url": "https://codeload.github.com/MaureenZOU/detectron2-xyz/tar.gz/refs/heads/main",
+    "patch": "patches/detectron2-pillow.patch",
+    "build": "CPU extension; torchvision CUDA ops tested separately"
+  }
+}

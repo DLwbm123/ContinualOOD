@@ -1,0 +1,83 @@
+STARTER PACKAGE STATIC VALIDATION
+Date: 2026-10-16
+
+PASS | YAML parsed: configs/extensions.yaml
+PASS | YAML parsed: configs/pilot.yaml
+PASS | YAML parsed: configs/source_registry.yaml
+PASS | training-free optimizer guard is false
+PASS | weights and running buffers frozen in default config
+PASS | model family fixed to BiomedParse v1
+PASS | unresolved revisions/checksums are not fabricated
+PASS | 60-patient target split arithmetic is consistent
+PASS | primary stream has 30 unique planned patients
+PASS | fit plus null patches fit per-scale memory budget
+PASS | per-scale and per-study memory patch caps agree
+PASS | time and probe state guards configured
+PASS | large extensions disabled by default
+PASS | JSON Schema valid: schemas/evaluation_record.schema.json
+PASS | JSON Schema valid: schemas/runtime_study.schema.json
+PASS | in-memory synthetic runtime schema example accepted
+PASS | runtime schema rejects prohibited field: label_path
+PASS | runtime schema rejects prohibited field: center_id
+PASS | runtime schema rejects prohibited field: stage_id
+PASS | runtime schema rejects prohibited field: tumor_type_truth
+PASS | runtime schema rejects prohibited field: is_true_positive
+PASS | unknown label schema case accepted without treating as negative
+PASS | schema rejects unverified negative claim
+PASS | schema rejects complete annotation with missing label path
+PASS | nonempty UTF-8 Markdown: AGENTS.md
+PASS | balanced code fences: AGENTS.md
+PASS | no null/replacement characters: AGENTS.md
+PASS | nonempty UTF-8 Markdown: CODEX_START_PROMPT.md
+PASS | balanced code fences: CODEX_START_PROMPT.md
+PASS | no null/replacement characters: CODEX_START_PROMPT.md
+PASS | nonempty UTF-8 Markdown: CONTINUAL_OOD_STARTUP.md
+PASS | balanced code fences: CONTINUAL_OOD_STARTUP.md
+PASS | no null/replacement characters: CONTINUAL_OOD_STARTUP.md
+PASS | nonempty UTF-8 Markdown: README.md
+PASS | balanced code fences: README.md
+PASS | no null/replacement characters: README.md
+PASS | nonempty UTF-8 Markdown: docs/SOURCES.md
+PASS | balanced code fences: docs/SOURCES.md
+PASS | no null/replacement characters: docs/SOURCES.md
+PASS | nonempty UTF-8 Markdown: templates/BLOCKERS_TEMPLATE.md
+PASS | balanced code fences: templates/BLOCKERS_TEMPLATE.md
+PASS | no null/replacement characters: templates/BLOCKERS_TEMPLATE.md
+PASS | nonempty UTF-8 Markdown: templates/PILOT_REPORT_TEMPLATE.md
+PASS | balanced code fences: templates/PILOT_REPORT_TEMPLATE.md
+PASS | no null/replacement characters: templates/PILOT_REPORT_TEMPLATE.md
+PASS | main document has sections 0 through 19
+PASS | main document and YAML memory defaults match
+PASS | empirical rank guarantee boundary explicit
+PASS | new-organ forward-transfer limitation explicit
+PASS | proposed CLI explicitly distinguished from implemented software
+PASS | package member exists: AGENTS.md
+PASS | package member exists: CONTINUAL_OOD_STARTUP.md
+PASS | package member exists: CODEX_START_PROMPT.md
+PASS | package member exists: configs/pilot.yaml
+PASS | package member exists: configs/source_registry.yaml
+PASS | package member exists: configs/extensions.yaml
+PASS | package member exists: docs/SOURCES.md
+PASS | package member exists: schemas/runtime_study.schema.json
+PASS | package member exists: schemas/evaluation_record.schema.json
+PASS | package member exists: templates/PILOT_REPORT_TEMPLATE.md
+PASS | package member exists: templates/BLOCKERS_TEMPLATE.md
+PASS | package member exists: .gitignore
+PASS | no source data/model payload in README.md
+PASS | no source data/model payload in AGENTS.md
+PASS | no source data/model payload in CODEX_START_PROMPT.md
+PASS | no source data/model payload in CONTINUAL_OOD_STARTUP.md
+PASS | no source data/model payload in .gitignore
+PASS | no source data/model payload in VALIDATION_REPORT.txt
+PASS | no source data/model payload in templates/BLOCKERS_TEMPLATE.md
+PASS | no source data/model payload in templates/PILOT_REPORT_TEMPLATE.md
+PASS | no source data/model payload in configs/pilot.yaml
+PASS | no source data/model payload in configs/source_registry.yaml
+PASS | no source data/model payload in configs/extensions.yaml
+PASS | no source data/model payload in schemas/evaluation_record.schema.json
+PASS | no source data/model payload in schemas/runtime_study.schema.json
+PASS | no source data/model payload in docs/SOURCES.md
+
+NOT EXECUTED: data download, source clone, model loading, R2-Seg inference, algorithm tests, medical experiments.
+The schema examples are synthetic in-memory validation inputs only.
+The checks above validate this handoff package, not the future implementation or its scientific performance.
