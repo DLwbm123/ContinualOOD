@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "checked_on": "2026-10-16",
-  "status": "MODEL_LOADED_P1_IDENTITY_LIMITATIONS_P2_PENDING",
+  "status": "P3_COMPLETED_WITH_DOCUMENTED_DATA_LIMITATIONS",
   "r2seg": {
     "url": "https://github.com/Eurekashen/R2Seg",
     "commit": "48a0a14ce1f0da6a51cdf26bcc821d64b176c0c5",
@@ -50,7 +50,7 @@
     "downloaded": true,
     "patient_mapping_audited": "release_image_key_grouping_only"
   },
-  "inference_ready": false,
+  "inference_ready": true,
   "detectron2": {
     "url": "https://github.com/MaureenZOU/detectron2-xyz",
     "commit": "42121d75e10d9f858f3a91b6a39f5722c02868f0",

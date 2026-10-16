@@ -1,7 +1,8 @@
 # Current limits — 2026-10-16
 
-- Full-scan smoke and parity are not yet accepted. P3 must not be called complete
-  until these gates and the independent evaluator finish.
+- No execution blocker remains for this bounded P3 run: complete smoke, parity,
+  network-state checks, 12 dev inferences and independent evaluation finished.
+  The scientific limitations below remain unresolved.
 - The released 221 subject-image keys differ from the paper's 228 patients.
   Workbooks establish exact image/mask grouping; they do not provide an independent
   cross-center identity registry or longitudinal identifiers. No duplicate arrays
@@ -16,6 +17,10 @@
   environment. Optional deformable-attention CUDA operators remain unbuilt and
   unused; this is not evidence about other architectures.
 
-Resolved: auxiliary asset availability, strict checkpoint coverage and initial real
-GPU forward. Original network/preparation failures remain in private logs; no CPU
+Resolved: auxiliary asset availability, strict checkpoint coverage, full real GPU
+smoke, the recorded parity checks and independent dev evaluation. Original network/preparation failures remain in private logs; no CPU
 fallback, model retraining or broad dependency upgrade was used.
+
+C1 had no valid current-reference correction in 297 proposals. This is a negative
+feasibility result under the frozen defaults, not evidence that valid reference
+calibration cannot help. No further experiment is authorized past the P3 stop.

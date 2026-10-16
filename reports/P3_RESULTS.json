@@ -1,0 +1,167 @@
+{
+  "evaluation_summary.json": {
+    "attempted_scans": 12,
+    "failed_scans": 0,
+    "methods": {
+      "B0_R2_NATIVE": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.04416925970199389,
+        "median_positive_annotation_dice": 0.016422359326809015,
+        "annotated_lesions": 14,
+        "matched_lesions": 4,
+        "empty_scans": 0,
+        "unmatched_predictions": 242
+      },
+      "B1_all_candidates": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.04566221429200023,
+        "median_positive_annotation_dice": 0.016422359326809015,
+        "annotated_lesions": 14,
+        "matched_lesions": 4,
+        "empty_scans": 0,
+        "unmatched_predictions": 242
+      },
+      "B1_physical_margin": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.04406621532067076,
+        "median_positive_annotation_dice": 0.016422359326809015,
+        "annotated_lesions": 14,
+        "matched_lesions": 4,
+        "empty_scans": 0,
+        "unmatched_predictions": 243
+      },
+      "B1_compartment": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.04416925970199389,
+        "median_positive_annotation_dice": 0.016422359326809015,
+        "annotated_lesions": 14,
+        "matched_lesions": 4,
+        "empty_scans": 0,
+        "unmatched_predictions": 242
+      },
+      "C0_CONFIDENCE_ONLY": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.0628979553041594,
+        "median_positive_annotation_dice": 0.015281731743568883,
+        "annotated_lesions": 14,
+        "matched_lesions": 5,
+        "empty_scans": 0,
+        "unmatched_predictions": 176
+      },
+      "C1_CURRENT_CALIBRATION": {
+        "scans": 12,
+        "mean_positive_annotation_dice": 0.0628979553041594,
+        "median_positive_annotation_dice": 0.015281731743568883,
+        "annotated_lesions": 14,
+        "matched_lesions": 5,
+        "empty_scans": 0,
+        "unmatched_predictions": 176
+      }
+    },
+    "loss_stages": {
+      "annotated_lesions": 14,
+      "final_has_overlap": 12,
+      "lost_at_statistics": 1,
+      "absent_from_probability_candidates": 1
+    },
+    "local_reference": {
+      "candidate_over_16mm": 94,
+      "fewer_than_4_null_patches": 127,
+      "candidate_under_16_samples": 76
+    },
+    "slices": 289,
+    "anchor_fallback_slices": 0,
+    "FROC": "not_identifiable_from_partial_annotations",
+    "FP_per_scan": "not_identifiable_from_partial_annotations",
+    "screening_specificity": "not_applicable_no_verified_negatives"
+  },
+  "additional_summary.json": {
+    "paired": {
+      "B1_all_candidates": {
+        "mean_dice_delta": 0.0014929545900063494,
+        "improved": 4,
+        "worsened": 0,
+        "unchanged": 8,
+        "leave_one_out_delta_range": [
+          0.00046606769076392514,
+          0.0016286777345523812
+        ],
+        "bootstrap_percentile_95": [
+          3.6143343502154654e-06,
+          0.004044208883867218
+        ]
+      },
+      "B1_physical_margin": {
+        "mean_dice_delta": -0.00010304438132312948,
+        "improved": 0,
+        "worsened": 1,
+        "unchanged": 11,
+        "leave_one_out_delta_range": [
+          -0.0001124120523525049,
+          0.0
+        ],
+        "bootstrap_percentile_95": [
+          -0.00030913314396938845,
+          0.0
+        ]
+      },
+      "B1_compartment": {
+        "mean_dice_delta": 0.0,
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 12,
+        "leave_one_out_delta_range": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_percentile_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "C1_CURRENT_CALIBRATION": {
+        "mean_dice_delta": 0.0,
+        "improved": 0,
+        "worsened": 0,
+        "unchanged": 12,
+        "leave_one_out_delta_range": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_percentile_95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "sensitivity_analysis": {
+      "B0_R2_NATIVE": {
+        "recall_iou_005": 0.42857142857142855,
+        "recall_iou_025": 0.07142857142857142
+      },
+      "B1_all_candidates": {
+        "recall_iou_005": 0.42857142857142855,
+        "recall_iou_025": 0.07142857142857142
+      },
+      "B1_compartment": {
+        "recall_iou_005": 0.42857142857142855,
+        "recall_iou_025": 0.07142857142857142
+      },
+      "B1_physical_margin": {
+        "recall_iou_005": 0.42857142857142855,
+        "recall_iou_025": 0.0
+      },
+      "C0_CONFIDENCE_ONLY": {
+        "recall_iou_005": 0.35714285714285715,
+        "recall_iou_025": 0.14285714285714285
+      },
+      "C1_CURRENT_CALIBRATION": {
+        "recall_iou_005": 0.35714285714285715,
+        "recall_iou_025": 0.14285714285714285
+      }
+    },
+    "fixed_candidate_iou01_matches": 5,
+    "annotated_lesions": 14,
+    "C0_C1_exact_mask_equal_scans": 12
+  }
+}

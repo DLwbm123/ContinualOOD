@@ -1,13 +1,24 @@
-# Parity status — 2026-10-16
+# P2 parity — completed 2026-10-16
 
-Not yet completed. Ten real inputs are fixed by four evenly spaced native slice
-indices per smoke check, taking the first ten in frozen check order; neither GT nor
-model output selects them. Identical seed and FP32 settings are used for each paired
-native/observed call. Required checks are exact binary masks, zero maximum probability
-difference, retained statistics and all raw candidate masks. A failure aborts P3;
-no tolerance relaxation is allowed.
+Ten fixed real slice inputs were evaluated twice with the same plan, seed and FP32
+settings through the locked native and observed paths. Slice indices came from
+four evenly spaced native indices per smoke check, taking the first ten in frozen
+check order, without consulting labels or outputs.
 
-Post-warmup network parameters and buffers are compared exactly with a CPU snapshot.
-Six synthetic tests passed, covering geometry, input-field isolation, sparse table
-parsing, invalid-reference fallback and one-to-one lesion matching. They are not
-real-input parity evidence. History/memory/probe tests are outside this run.
+All ten pairs had:
+- maximum absolute fused probability difference **0.0**;
+- exactly equal final binary masks;
+- equal retained candidate statistics and BH results;
+- exactly equal sets/masks of all raw candidates.
+
+Deleted-candidate statistics were saved in the observed path; the unobserved
+PipelineOutput exposes only retained candidates, so direct paired statistic
+comparison covers retained candidates. Both paths invoke the unchanged upstream
+statistical evaluator. No threshold relaxation or algorithm patch was used.
+
+After fixed-prompt warmup, all 1,131 network state entries were copied and compared
+exactly after P2 and again after P3. Both comparisons found zero changes. Model
+parameters were frozen and evaluation mode remained enabled. Six synthetic tests
+also passed for geometry, schema separation, sparse tables, reference fallback and
+one-to-one lesion matching. No memory/probe tests or hardware-failure injection
+were claimed.
